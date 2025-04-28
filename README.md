@@ -80,7 +80,7 @@ pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geo
 
 ## Dataset
 
-Similar to the [Texturify](https://nihalsid.github.io/texturify/) project, the data can processed using https://github.com/nihalsid/CADTextures
+Similar to the [Texturify](https://nihalsid.github.io/texturify/) project, the data can be processed using https://github.com/nihalsid/CADTextures
 
 ## Training & Experiments
 
