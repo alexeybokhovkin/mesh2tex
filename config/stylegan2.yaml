@@ -1,0 +1,153 @@
+#dataset_path: /cluster/gimli/ysiddiqui/CADTextures/SingleShape/CubeTexturesForGraphQuad_gan_FC_processed
+dataset_path: /cluster/erebor/abokhovkin/scannet-texturing/data/CADTextures/Photoshape/shapenet-chairs-manifold-highres-part_processed_color
+mesh_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape/shapenet-chairs-manifold-highres
+pairmeta_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape-model/metadata/pairs.json
+shapes_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape-model/metadata/shapes.json
+df_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape-model/shapenet-chairs-manifold
+image_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape/exemplars
+mask_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape/exemplars_mask
+
+#image_path: /cluster/valinor/abokhovkin/scannet-texturing/data/Photoshape/exemplars_extended_scannet
+#mask_path: /cluster/valinor/abokhovkin/scannet-texturing/data/Photoshape/exemplars_extended_scannet_mask
+#image_path: /cluster/valinor/abokhovkin/scannet-texturing/data/Photoshape/exemplars_scannet_textures
+#mask_path: /cluster/valinor/abokhovkin/scannet-texturing/data/Photoshape/exemplars_scannet_textures_mask
+
+condition_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape/shapenet-chairs-manifold_autoencoder
+stat_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape/shapenet-chairs-manifold-highres_stat.pt
+uv_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape/uv_map
+silhoutte_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape/uv_mask
+normals_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape/uv_normals
+random_background_path: /cluster/daidalos/abokhovkin/scannet-texturing/data/roca_resized_images
+
+mesh_resolution: 64
+num_classes: 7
+load_checkpoint: False
+freeze_texturify: False
+small_shader: False
+residual: False
+overfit: False
+tanh_render: True
+use_act_render: True
+render_shape_features: False
+
+experiment: fast_dev
+seed: null
+save_epoch: 1
+sanity_steps: 1
+max_epoch: 2000
+scheduler: null
+val_check_percent: 1.0
+val_check_interval: 1
+accumulate_grad_batches: 4
+
+num_mapping_layers: 5
+lr_g: 0.002
+lr_d: 0.00235
+lr_e: 0.0001
+lr_r: 0.0005 # 0.002 old value from lr_g
+lr_patch_d: 0.001
+lr_mlp_d: 0.001
+lazy_gradient_penalty_interval: 16
+lazy_path_penalty_after: 0
+lazy_path_penalty_interval: 4
+latent_dim: 512
+global_latent_dim: 128
+condition_dim: 512
+map_latent_dim: 512
+lambda_gp: 1
+lambda_plp: 2
+lambda_patch: 1
+ada_start_p: 0.  #to disable set to -1
+ada_target: 0.6
+ada_interval: 4
+ada_fixed: False
+g_channel_base: 16384
+d_channel_base: 16384
+d_channel_max: 512
+features: normal
+p_synthetic: 0.0
+#normal
+#position
+#position+normal
+#normal+laplacian
+#normal+ff1+ff2
+#normal+curvature
+#normal+laplacian+ff1+ff2+curvature
+use_mes_pass: False
+
+random_bg: white
+colorspace: rgb
+
+image_size: 128
+render_size:
+num_patch_per_view: 4
+patch_size: 64
+image_size_hres: 512
+erode: True
+camera_noise: 0.0
+
+# resume: /rhome/abokhovkin/projects/stylegan2-ada-3d-texture/runs/23051855_StyleGAN23D_mlpshader_bigdisc_twodisc_lrr10-5_lrd14-4_lrmd10-4_lrg12-4_lre1-4_noact_stablegs_mlp2x_noglobalstyle/checkpoints/_epoch=21.ckpt
+# resume_ema: /rhome/abokhovkin/projects/stylegan2-ada-3d-texture/runs/23051855_StyleGAN23D_mlpshader_bigdisc_twodisc_lrr10-5_lrd14-4_lrmd10-4_lrg12-4_lre1-4_noact_stablegs_mlp2x_noglobalstyle/checkpoints/ema_000028028.pth
+# resume_ema_r: /rhome/abokhovkin/projects/stylegan2-ada-3d-texture/runs/23051855_StyleGAN23D_mlpshader_bigdisc_twodisc_lrr10-5_lrd14-4_lrmd10-4_lrg12-4_lre1-4_noact_stablegs_mlp2x_noglobalstyle/checkpoints/ema_r_000028028.pth
+
+resume_ema: null
+resume_ema_r: null
+resume: null
+
+num_faces: [24576, 6144, 1536, 384, 96, 24]
+#num_faces: [24576, 6144, 1536, 384, 96]
+#image_size: 32
+#num_faces: [1024, 256, 64, 16]
+#image_size: 64
+#num_faces: [1536, 384, 96, 24]
+num_eval_images: 2048
+num_vis_images: 1024
+num_vis_meshes: 64
+batch_size: 16 # 16
+views_per_sample: 2 # 2
+random_views: False
+num_workers: 8
+optimize_lights: False
+optimize_shininess: False
+
+conv_aggregation: max
+g_channel_max: 512
+enc_conv: face
+
+df_trunc: 0.3125
+df_size: 0.0625
+df_mean: 0.2839
+df_std: 0.0686
+
+# optimization 
+texopt: True
+mode: shapenet
+transfer: False
+aligned: True
+vgg_path: /cluster/valinor/abokhovkin/StyleMesh/VGG/vgg_conv.pth
+pose_ckpt_path: /rhome/abokhovkin/projects/stylegan2-ada-3d-texture/runs/23021410_ImageLatent_chair_scannet_pose_resnet18_lr0.0003/checkpoints/_epoch=9.ckpt
+nocs_dir: /cluster/valinor/abokhovkin/scannet-texturing/data/pred_nocs/chair_shapenet_aligned_EVAL
+shapenet_dir: /canis/ShapeNet/ShapeNetCore.v2/03001627
+scannet_crops_dir: /cluster/valinor/abokhovkin/scannet-texturing/data/ScanNet_chair_masked
+legal_scannet_ids_path: /cluster/valinor/abokhovkin/scannet-texturing/data/scannet_legal_ids.json
+shapenet_ids_path: /cluster/valinor/abokhovkin/scannet-texturing/data/ShapeNetViews/used_obj_ids.json
+prefix: chair_shapenet_500iter_stylemeshvgg_nocspatch100_delta+tuner+shape_layer3
+
+#shape_id: shape02880_rank01_pair1
+shape_id: shape06567_rank01_pair7492
+epoch_steps: 320
+
+mbstd_on: 0
+
+create_new_resume: False
+
+wandb_main: False
+suffix: ''
+postfix: 0
+
+preload: False
+
+hydra:
+  output_subdir: null # Disable saving of config files. We'll do that ourselves.
+  run:
+    dir: .

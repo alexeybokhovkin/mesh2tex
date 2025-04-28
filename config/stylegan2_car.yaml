@@ -1,0 +1,130 @@
+# dataset_path: /cluster/gimli/ysiddiqui/CADTextures/CompCars/manifold_combined_processed
+dataset_path: /cluster/erebor/abokhovkin/scannet-texturing/data/CADTextures/CompCars/manifold_combined_processed-semantic_2
+mesh_path: /cluster/gimli/ysiddiqui/CADTextures/CompCars/manifold_combined
+image_path: /cluster/gimli/ysiddiqui/CADTextures/CompCars/exemplars_highres
+mask_path: /cluster/gimli/ysiddiqui/CADTextures/CompCars/exemplars_highres_mask
+uv_path: /cluster/gimli/ysiddiqui/CADTextures/CompCars/uv_map_first
+silhoutte_path: /cluster/gimli/ysiddiqui/CADTextures/CompCars/uv_mask
+normals_path: /cluster/gimli/ysiddiqui/CADTextures/CompCars/uv_normals
+stat_path: /cluster/gimli/ysiddiqui/CADTextures/Photoshape/shapenet-chairs-manifold-highres_stat.pt
+
+num_classes: 9
+load_checkpoint: False
+freeze_texturify: False
+small_shader: False
+residual: False
+overfit: False
+tanh_render: True
+use_act_render: True
+render_shape_features: False
+
+experiment: fast_dev
+seed: null
+save_epoch: 1
+sanity_steps: 1
+max_epoch: 5000
+scheduler: null
+val_check_percent: 1.0
+val_check_interval: 1
+accumulate_grad_batches: 12
+
+num_mapping_layers: 5
+lr_g: 0.002
+lr_d: 0.00235
+lr_e: 0.0001
+lr_r: 0.0005 # 0.002 old value from lr_g
+lr_patch_d: 0.001
+lr_mlp_d: 0.001
+lazy_gradient_penalty_interval: 16
+lazy_path_penalty_after: 0
+lazy_path_penalty_interval: 4
+latent_dim: 512
+condition_dim: 512
+proj_dim: 64
+lambda_gp: 1
+lambda_plp: 2
+lambda_patch: 1
+ada_start_p: 0.  #to disable set to -1
+ada_target: 0.6
+ada_interval: 4
+ada_fixed: False
+g_channel_base: 16384
+d_channel_base: 16384
+features: normal
+p_synthetic: 0.0
+use_mes_pass: False
+
+random_bg: grayscale
+colorspace: rgb
+
+image_size: 128
+render_size: null
+
+progressive_switch: [10e3, 40e3, 80e3, 180e3]
+alpha_switch: [5e3, 10e3, 10e3, 10e3]
+progressive_start_res: 6
+mbstd_on: 0
+
+num_patch_per_view: 4
+patch_size: 64
+image_size_hres: 512
+erode: True
+camera_noise: 0.0
+
+num_faces: [24576, 6144, 1536, 384, 96, 24]
+num_eval_images: 2048
+num_vis_images: 1024
+num_vis_meshes: 64
+batch_size: 16
+views_per_sample: 2
+random_views: False
+num_workers: 8
+optimize_lights: False
+optimize_shininess: False
+
+conv_aggregation: max
+g_channel_max: 512
+enc_conv: face
+
+df_trunc: 0.3125
+df_size: 0.0625
+df_mean: 0.2839
+df_std: 0.0686
+
+# optimization 
+texopt: False
+mode: compcars
+task: aligned # aligned / unaligned / transfer
+vgg_path: /cluster/valinor/abokhovkin/StyleMesh/VGG/vgg_conv.pth
+pose_ckpt_path: /rhome/abokhovkin/projects/stylegan2-ada-3d-texture/runs/08021506_ImageLatent_cars_shapenet_pose_resnet18_lr0.00002/checkpoints/_epoch=119.ckpt
+nocs_dir: /cluster/valinor/abokhovkin/scannet-texturing/data/pred_nocs/car_compcars_aligned_EVAL
+shapenet_dir: /canis/ShapeNet/ShapeNetCore.v2/02958343
+prefix: car_shapenet_500iter_stylemeshvgg_nocspatch64_unalignedtrans
+
+
+shape_id: c23a65ae787245248580e2c19c4f9aaf
+epoch_steps: 320
+
+create_new_resume: False
+
+wandb_main: False
+suffix: ''
+postfix: 0
+
+# resume: /rhome/abokhovkin/projects/stylegan2-ada-3d-texture/runs/18021548_StyleGAN23D-CompCars_mlpbig_bigdisc_twodisc_lrr5-4_lrmd55-5_lrd1-3_lrg1-3_lre1-4_mlp2x_2gpu_noglobfeat_norm/checkpoints/_epoch=75.ckpt
+# resume_ema: /rhome/abokhovkin/projects/stylegan2-ada-3d-texture/runs/18021548_StyleGAN23D-CompCars_mlpbig_bigdisc_twodisc_lrr5-4_lrmd55-5_lrd1-3_lrg1-3_lre1-4_mlp2x_2gpu_noglobfeat_norm/checkpoints/ema_000023864.pth
+# resume_ema_r: /rhome/abokhovkin/projects/stylegan2-ada-3d-texture/runs/18021548_StyleGAN23D-CompCars_mlpbig_bigdisc_twodisc_lrr5-4_lrmd55-5_lrd1-3_lrg1-3_lre1-4_mlp2x_2gpu_noglobfeat_norm/checkpoints/ema_r_000023864.pth
+
+resume: null
+resume_ema: null
+resume_ema_r: null
+
+preload: False
+
+prog_resume_ema: "/cluster_HDD/gondor/ysiddiqui/stylegan2-ada-3d-texture/runs/23020923_StyleGAN23D-CompCars_bigdtwin-clip_fg3bgg-lrd1g14-v8m8-1K_128/checkpoints/ema_000027474.pth"
+prog_resume: "/cluster_HDD/gondor/ysiddiqui/stylegan2-ada-3d-texture/runs/23020923_StyleGAN23D-CompCars_bigdtwin-clip_fg3bgg-lrd1g14-v8m8-1K_128/checkpoints/_epoch=174.ckpt"
+
+hydra:
+  output_subdir: null
+  run:
+    dir: .

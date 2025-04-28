@@ -1,0 +1,25 @@
+dataset_path: /cluster/valinor/abokhovkin/scannet-texturing/data/ShapeNetViews/chairs_shapenet
+#dataset_path: /cluster/valinor/abokhovkin/scannet-texturing/data/ShapeNetViews/chairs_scannet
+
+
+image_size: 512
+seed: null
+experiment: fast_dev
+batch_size: 64
+num_workers: 8
+save_epoch: 1
+sanity_steps: 1
+val_check_percent: 1.0
+max_epoch: 2000
+suffix: ''
+wandb_main: False
+val_check_interval: 20
+lr: 0.0003
+
+resume: null
+create_new_resume: False
+
+hydra:
+  output_subdir: null # Disable saving of config files. We'll do that ourselves.
+  run:
+    dir: .
