@@ -182,6 +182,25 @@ If you find our work useful in your research, please consider citing:
 		year={2023}
 	}
 
+Official Texturify code and paper:
+
+	@inproceedings{siddiqui2022texturify,
+		author    = {Yawar Siddiqui and
+					Justus Thies and
+					Fangchang Ma and
+					Qi Shan and
+					Matthias Nie{\ss}ner and
+					Angela Dai},
+		title     = {Texturify: Generating Textures on 3D Shape Surfaces},
+		booktitle = {Computer Vision - {ECCV} 2022 - 17th European Conference, Tel Aviv,
+					Israel, October 23-27, 2022, Proceedings, Part {III}},
+		series    = {Lecture Notes in Computer Science},
+		volume    = {13663},
+		pages     = {72--88},
+		publisher = {Springer},
+		year      = {2022}
+	}
+
 ## License
 
 Copyright © 2023 alexeybokhovkin
